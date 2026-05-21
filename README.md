@@ -64,7 +64,7 @@ cd ~/notes-app
 git pull origin main
 ```
 
-5. Nå, auto kjør prosjektet på nytt.
+5. Nå, kjøring av prosjektet på nytt.
 
 - Uvicorn brukes i prosjektet og prosessen skal sluttes:
 
