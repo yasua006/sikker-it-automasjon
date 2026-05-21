@@ -96,3 +96,46 @@ sudo vim /etc/crontab
 
 > [!IMPORTANT]
 > Pass på server bruker. Den heter ikke "server" for alle
+
+
+## Epost Setup
+Epost kan brukes for å kunne vite om hele shell filen du lagde kjørte og den skal også automatisk brukes når unattended upgrades package fikk gjøre ny package oppdateringer som default. Vi bruker msmtp for cronjobs, siden det er ikke for komplisert og passer bra for cronjobs.
+
+1. Installer både msmtp og msmtp-mta:
+
+```sh
+sudo apt install msmtp -y msmtp-mta -y
+```
+
+2. Gå til msmtprc filen i tekst editoren du valgte:
+
+```sh
+sudo vim /etc/msmtprc
+```
+
+3. Den kan inneholde den følgende for bruk av en Gmail konto:
+
+```sh
+defaults
+
+tls on
+port 587
+aliases /etc/aliases
+
+account gmail
+host smtp.gmail.com
+from epost@gmail.com
+user epost@gmail.com
+auth on
+password her
+
+account default: gmail
+```
+
+4. Få app passordet for å erstattet "password her" med den faktisk passord du fikk her: [Google app passwords](https://myaccount.google.com/apppasswords)
+
+5. Legg til `MAILTO=epost@gmail.com` i crontab filen med valgte tekst editor:
+
+```sh
+sudo vim /etc/crontab
+```
