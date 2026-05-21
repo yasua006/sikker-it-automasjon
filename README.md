@@ -139,3 +139,17 @@ account default: gmail
 ```sh
 sudo vim /etc/crontab
 ```
+
+### Setup Aliases
+1. Gå til /etc/aliases:
+
+```sh
+sudo vim /etc/aliases
+```
+
+2. Filen skal være følgende:
+```sh
+root: epost@gmail.com
+ 
+default: epost@gmail.com
+```
