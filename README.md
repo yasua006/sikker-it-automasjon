@@ -165,3 +165,27 @@ root: epost@gmail.com
  
 default: epost@gmail.com
 ```
+
+
+## Feilsøking
+Noe ganger så må du bruke sudo.
+
+1. Test msmtp manuelt:
+
+```sh
+printf "Subject: Test epost\n\nTest" | sudo msmtp -d epost@gmail.com
+```
+
+2. Sjekk cron logs:
+
+**Live** (tail):
+
+```sh
+sudo tail -f /var/log/syslog
+```
+
+**Ikke live** (cat):
+
+```sh
+sudo cat /var/log/syslog
+```
