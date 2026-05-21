@@ -9,19 +9,25 @@ Hvis du har ikke allerede.
 ## Server Sikkerhet
 Du skal sikre serveren ved hjelp av ukomplisert firewall.
 
-1. Før du aktiverer UFW, som er allerede installert, gi ssh tilgang for å kunne bruke det fortsatt:
+1. Installer UFW:
+
+```sh
+sudo apt install -y ufw
+```
+
+2. Før du aktiverer UFW, gi ssh tilgang for å kunne bruke det fortsatt:
 
 ```sh
 sudo ufw allow ssh
 ```
 
-2. Sjekk status på UFW:
+3. Sjekk status på UFW:
 
 ```sh
 sudo ufw status
 ```
 
-3. Nå kan du aktivere UFW: 
+4. Nå kan du aktivere UFW: 
 
 ```sh
 sudo ufw enable
@@ -31,7 +37,7 @@ sudo ufw enable
 - For sikkerhet oppdateringer, du må få med unattended upgrades package:
 
 ```sh
-sudo apt install unattended-upgrades
+sudo apt install -y unattended-upgrades
 ```
 
 
@@ -104,7 +110,7 @@ Epost kan brukes for å kunne vite om hele shell filen du lagde kjørte og den s
 1. Installer både msmtp og msmtp-mta:
 
 ```sh
-sudo apt install msmtp -y msmtp-mta -y
+sudo apt install -y msmtp -y msmtp-mta
 ```
 
 2. Gå til msmtprc filen i tekst editoren du valgte:
