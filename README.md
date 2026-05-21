@@ -132,9 +132,15 @@ password her
 account default: gmail
 ```
 
-4. Få app passordet for å erstattet "password her" med den faktisk passord du fikk her: [Google app passwords](https://myaccount.google.com/apppasswords)
+4. Gi msmtprc filen riktig tilgang:
 
-5. Legg til `MAILTO=epost@gmail.com` i crontab filen med valgte tekst editor:
+```sh
+chmod 600 /etc/msmtprc
+```
+
+5. Få app passordet for å erstattet "password her" med den faktisk passord du fikk her: [Google app passwords](https://myaccount.google.com/apppasswords)
+
+6. Legg til `MAILTO=epost@gmail.com` i crontab filen med valgte tekst editor:
 
 ```sh
 sudo vim /etc/crontab
