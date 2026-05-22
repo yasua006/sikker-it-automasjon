@@ -34,7 +34,7 @@ sudo ufw enable
 ```
 
 ### Oppdateringer
-- For sikkerhet oppdateringer, du må få med unattended upgrades package:
+- For sikkerhet oppdateringer, må du få med unattended upgrades package:
 
 ```sh
 sudo apt install -y unattended-upgrades
@@ -54,7 +54,7 @@ sudo vim /etc/apt/apt.conf.d/50unattended-upgrades
 
 > [!NOTE]
 > Erstatt tekst editor vim med det som du er komfortabel med som nano, micro, nvim, osv.
-> chmod trenger ikke for shell filen du lagde, siden vi bruker sh kommandoen for å unngå det
+> chmod trenges ikke for shell filen du lagde, siden vi bruker sh kommandoen for å unngå det
 
 3. Legg til en fil i server mappen og åpne den i tekst editoren valgt:
 
@@ -168,7 +168,7 @@ default: epost@gmail.com
 
 
 ## Feilsøking
-Noe ganger så må du bruke sudo.
+Noe ganger må du bruke sudo.
 
 1. Test msmtp manuelt:
 
