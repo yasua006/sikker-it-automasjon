@@ -97,7 +97,7 @@ sudo vim /etc/crontab
 2. Naviger deg til slutten av filen og legge til følgende:
 
 ```sh
-0 0 * * * server sh /home/server/auto-upd.sh
+0 0 * * * server /bin/sh /home/server/auto-upd.sh
 ```
 
 > [!IMPORTANT]
