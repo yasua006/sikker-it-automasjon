@@ -60,7 +60,7 @@ sudo vim /etc/apt/apt.conf.d/50unattended-upgrades
 
 ```sh
 cd ~
-vim auto-upd.sh
+vim auto-upd-proj.sh
 ```
 
 4. I denne eksempel, vil du oppdatere notes appen som er et git prosjekt innen server mappen:
@@ -86,7 +86,7 @@ pkill -f "uvicorn"
 
 
 ## Server Automasjon
-Den eneste automasjon akkurat nå ble bare for oppdateringer av Linux packages, inkludert sikkerhet. Da kan vi bruke cronjobs for auto kjøring av "auto-upd.sh" filen en dag hver dag.
+Den eneste automasjon akkurat nå ble bare for oppdateringer av Linux packages, inkludert sikkerhet. Da kan vi bruke cronjobs for auto kjøring av "auto-upd-proj.sh" filen en dag hver dag.
 
 1. Gå til /etc/crontab filen i valgte tekst editor:
 
@@ -97,7 +97,7 @@ sudo vim /etc/crontab
 2. Naviger deg til slutten av filen og legge til følgende:
 
 ```sh
-0 0 * * * server /bin/sh /home/server/auto-upd.sh
+0 0 * * * server /bin/sh /home/server/auto-upd-proj.sh
 ```
 
 > [!IMPORTANT]
@@ -189,3 +189,17 @@ sudo tail -f /var/log/syslog
 ```sh
 sudo cat /var/log/syslog
 ```
+
+3. Sjekk cron status:
+
+```sh
+sudo systemctl status cron
+```
+
+4. Restart cron
+
+Noe ganger trenger vi å restarte cron servicen:
+```sh
+sudo systemctl restart cron
+```
+
