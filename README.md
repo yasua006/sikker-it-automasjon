@@ -28,7 +28,7 @@ sudo ufw enable
 ```
 
 ### Oppdateringer
-- For sikkerhet oppdateringer, du må få med unattended upgrades package:
+- For sikkerhet oppdateringer som er automatisk også, må du få med unattended upgrades package:
 
 ```sh
 sudo apt install unattended-upgrades
