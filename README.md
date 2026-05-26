@@ -138,7 +138,7 @@ password her
 account default: gmail
 ```
 
-4. Gi msmtprc filen riktig tilgang:
+4. Gi msmtprc filen riktig tilgang siden passord feltet brukes:
 
 ```sh
 sudo chmod 600 /etc/msmtprc
