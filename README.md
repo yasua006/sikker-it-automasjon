@@ -75,7 +75,7 @@ git pull origin main
 - Uvicorn brukes i prosjektet og prosessen skal sluttes:
 
 ```sh
-sudo pkill -f "uvicorn"
+pkill -f "uvicorn"
 ```
 
 - Prosjektet inkluderer Python med venv og uvicorn, derfor aktivasjon av venv og uvicorn kommandoen etter på med && bruk:
@@ -141,7 +141,7 @@ account default: gmail
 4. Gi msmtprc filen riktig tilgang:
 
 ```sh
-chmod 600 /etc/msmtprc
+sudo chmod 600 /etc/msmtprc
 ```
 
 5. Få app passordet for å erstattet "password her" med den faktisk passord du fikk her: [Google app passwords](https://myaccount.google.com/apppasswords)
