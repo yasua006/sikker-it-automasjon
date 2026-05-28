@@ -88,6 +88,9 @@ pkill -f "uvicorn"
 ## Server Automasjon
 Den eneste automasjon akkurat nå ble bare for oppdateringer av Linux packages, inkludert sikkerhet. Da kan vi bruke cronjobs for auto kjøring av "auto-upd-proj.sh" filen en dag hver dag.
 
+Velg en av de to: cron eller systemd timers.
+
+### Cron som valg
 1. Gå til /etc/crontab filen i valgte tekst editor:
 
 ```sh
@@ -98,6 +101,61 @@ sudo vim /etc/crontab
 
 ```sh
 0 0 * * * server /bin/sh /home/server/auto-upd-proj.sh
+```
+
+### Systemd Timers som valg
+1. Gå til /etc/systemd/system:
+
+```sh
+cd /etc/systemd/system
+```
+
+2. Legg til en ny auto-upd-proj timer fil:
+
+```sh
+sudo vim auto-upd-proj.timer
+```
+
+Den skal inneholde den følgende:
+```sh
+[Unit]
+Description=Update notes app project timer.
+
+[Timer]
+OnCalendar=*-*-* *:0/5:00
+Persistent=true
+Unit=auto-upd-proj.service
+
+[Install]
+WantedBy=timers.target
+```
+
+3. Legg til en ny auto-upd-proj service fil:
+
+```sh
+sudo vim auto-upd-proj.service
+```
+
+Den skal inneholde den følgende:
+```sh
+[Unit]
+Description=Update notes app project.
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /home/server/auto-upd-proj.sh
+```
+
+4. Reload daemon:
+
+```sh
+sudo systemctl daemon-reload
+```
+
+5. Aktiver timer nå:
+
+```sh
+sudo systemctl enable --now auto-upd-proj.timer
 ```
 
 > [!IMPORTANT]
@@ -176,7 +234,8 @@ Noe ganger må du bruke sudo.
 printf "Subject: Test epost\n\nTest" | sudo msmtp -d epost@gmail.com
 ```
 
-2. Sjekk cron logs:
+### Hvis du prøver Cron:
+1. Sjekk cron logs:
 
 **Live** (tail):
 
@@ -190,16 +249,28 @@ sudo tail -f /var/log/syslog
 sudo cat /var/log/syslog
 ```
 
-3. Sjekk cron status:
+2. Sjekk cron status:
 
 ```sh
 sudo systemctl status cron
 ```
 
-4. Restart cron
+3. Restart cron
 
 Noe ganger trenger vi å restarte cron servicen:
 ```sh
 sudo systemctl restart cron
 ```
 
+### Hvis du prøver Systemd Timers
+1. Sjekk timer status:
+
+```sh
+sudo systemctl status auto-upd-proj.timer
+```
+
+2. Sjekk journal til timer:
+
+```sh
+journal -u auto-upd-proj.timer
+```
